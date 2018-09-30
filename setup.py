@@ -70,7 +70,7 @@ def copy_config_file():
 	dest_file = config.CONFIG_FILE
 	try:
 		copy_file(source_file, dest_file)
-		os.chmod(dest_file, stat.S_IXUSR)
+		os.chmod(dest_file, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR)
 		print(f"\tConfig file {dest_file} now in place.\n")
 	except:
 		err_msg = "Configuration file copy failed."
@@ -90,7 +90,7 @@ def copy_initd_file():
 	dest_file = f"{config.INIT_PATH}/docker-launch.sh"
 	try:
 		copy_file(source_file, dest_file)
-		os.chmod(dest_file, stat.S_IXUSR)
+		os.chmod(dest_file, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR)
 		print(f"\tInit file {dest_file} now in place.\n")
 	except:
 		err_msg = "Init.d file copy failed."
