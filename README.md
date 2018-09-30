@@ -49,10 +49,10 @@ docker-launch routines will be installed and will run from in normal operation.
 currently resides. They should not reside in INSTALL_PATH before running
 setup.py in the next step.
 3. Run setup.py as a priviledged user (e.g. "sudo python3 setup.py"). This
-will:
-  a. Copy the docker-launch files into the INSTALL_PATH.
-  b. Copy the samples/sample-docker-launch.conf to CONFIG_FILE.
-  c. Copy the samples/docker-launch.sh script into /etc/init.d
+will:  
+  a. Copy the docker-launch files into the INSTALL_PATH.  
+  b. Copy the samples/sample-docker-launch.conf to CONFIG_FILE.  
+  c. Copy the samples/docker-launch.sh script into /etc/init.d  
 4. Modify the configuration file to reflect the containers/directories to
 run against.
 5. If there are any directories specified in the configuration file, set them
