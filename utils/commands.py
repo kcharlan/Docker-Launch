@@ -129,6 +129,7 @@ def launch_directory(command_args):
 	:returns: True if all containers launched successfully, otherwise False
 	"""
 	dir = command_args[0]
+	dir = dir.rstrip('/')
 	if not directory_exists(dir):
 		logging.error(f"Directory '{dir}' does not exist or is not a directory.")
 		return False

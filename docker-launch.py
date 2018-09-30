@@ -60,8 +60,10 @@ def process_commands(commands_master_list):
 
 def main():
 	try:
+		logging.info("docker-launch starting")
 		commands_list = optionsfile.read_options_file(config.CONFIG_FILE)
 		process_commands(commands_list)
+		logging.info('docker-launch finished')
 	except OptionsFileException as err:
 		err_msg = f"Processing aborted. Options File Exception."
 		err_msg = f"{err_msg} Error: {err}"
