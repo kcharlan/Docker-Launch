@@ -16,7 +16,7 @@ INSTALL_PATH="/usr/local/sbin/docker-launch"
 # using virtualenv or similar to provide the higher level of Python, then
 # edit this path and uncomment this seciton.
 # PYENV="env"
-# source ${BASE_PATH}/${PYENV}/bin/activate
+# source ${INSTALL_PATH}/${PYENV}/bin/activate
 
 # If using a virtual environment, and you already set your default python
 # to python3 (or whatever version needed at 3.6.3 or above), then modify the 
