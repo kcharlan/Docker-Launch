@@ -46,16 +46,24 @@ the prior files and redeploy by running setup.py again).
   b. Modify the INSTALLED_PATH to point to the directory where the 
 docker-launch routines will be installed and will run from in normal operation.  
 2. Change into the directory where docker-launch was cloned or where it
-currently resides. They should not reside in INSTALL_PATH before running
+currently resides. They should not reside in INSTALLED_PATH before running
 setup.py in the next step.
-3. Run setup.py as a priviledged user (e.g. "sudo python3 setup.py"). This
+3. Change directory into the location where setup.py is located, and then
+run setup.py as a priviledged user (e.g. "sudo python3 setup.py"). This
 will:  
-  a. Copy the docker-launch files into the INSTALL_PATH.  
+  a. Copy the docker-launch files into the INSTALLED_PATH.  
   b. Copy the samples/sample-docker-launch.conf to CONFIG_FILE.  
   c. Copy the samples/docker-launch.sh script into /etc/init.d  
-4. Modify the configuration file to reflect the containers/directories to
+4. If your environment does not meet the requirements.txt and Python 3.6.3 or
+above, or if you wish to run docker-launch in a virtual environment, go to the
+INSTALL_PATH directory and setup your virtual environment. Be sure to specify
+the python version and install the requirements.txt modules. Also be sure to
+make the changes in step 6 to invoke this virtual environment prior to
+running docker-launch.py (see the comments inside the script).
+5. Modify the configuration file to reflect the containers/directories to
 run against.
-5. If there are any directories specified in the configuration file, set them
-up to contain the container names (e.g. touch /a/directory/container-name)
-6. Modify the docker-launch.sh script to match your environment
-7. Install the docker-launch.sh in your init services (e.g. "sudo update-rc.d docker-launch.sh defaults")
+6. If there are any directories specified in the configuration file, set them
+up to contain the container names (e.g. touch /a/directory/container-name) or 
+copy the docker-compose yaml file(s) into them.
+7. Modify the docker-launch.sh script to match your environment
+8. Install the docker-launch.sh in your init services (e.g. "sudo update-rc.d docker-launch.sh defaults")

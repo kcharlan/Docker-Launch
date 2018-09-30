@@ -53,7 +53,7 @@ def is_yaml(container_name):
 	"""
 	# if the container is not a file, then it cannot be a docker-compose
 	# YAML file
-	if not os.path.isfile(container_name):
+	if not file_exists(container_name):
 		return False
 	try:
 		with open(container_name, "r") as stream:
@@ -64,6 +64,16 @@ def is_yaml(container_name):
 		return False
 	return True
 		
+
+def file_exists(filename):
+	"""
+	Utility function to check if a specified file exists (or not)
+	:param filename: the file name to validate exists
+	:returns: True if the file exists and is a file (e.g. not a directory),
+	:         otherwise False.
+	"""
+	return os.path.isfile(filename)
+
 
 def directory_exists(directory):
 	"""
