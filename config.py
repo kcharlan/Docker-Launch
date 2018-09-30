@@ -13,8 +13,8 @@ try:
 except ValueError:
 	sys.path.append(SOURCE_PATH)
 
-INSTALLED_PATH = '/usr/local/sbin/docker-launch'
-
 CONFIG_FILE = '/etc/docker-launch.conf'
 
 INIT_PATH = '/etc/init.d'
+
+INSTALLED_PATH = '/usr/local/sbin/docker-launch'

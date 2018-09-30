@@ -112,8 +112,10 @@ def launch_container(command_args, directory=None):
 	status, output = exec_cmd_with_output(command)
 	
 	if status == 0:
+		logging.info(f"Successfully started '{container}'")
 		return True
 	
+	logging.warn(f"FAILED to start '{container}'")
 	return False
 	
 	

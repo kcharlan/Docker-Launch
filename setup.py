@@ -1,6 +1,10 @@
 import logging
 import os
 import shutil
+import stat
+
+from shutil import Error
+
 
 import config
 from utils.commands import directory_exists, file_exists
@@ -26,7 +30,7 @@ def copy_install_files():
 	try:
 		shutil.copytree(CURRENT_DIR, dest_dir)
 		print(f"\tdocker-launch files now installed in {dest_dir}\n")
-	except (IOError, os.error) as why:
+	except (IOError, os.error, Error) as why:
 		err_msg = f"Install directory copy failed: {why}.\nAborting install."
 		logging.critical(err_msg)
 		raise Exception(err_msg)
@@ -48,7 +52,7 @@ def copy_file(source_file, dest_file):
 	
 	try:
 		shutil.copyfile(source_file, dest_file)
-	except (IOError, os.error) as why:
+	except (IOError, os.error, Error) as why:
 		err_msg = f"File copy failed: {why}. Aborting install."
 		logging.critical(err_msg)
 		raise Exception(err_msg)
@@ -66,6 +70,7 @@ def copy_config_file():
 	dest_file = config.CONFIG_FILE
 	try:
 		copy_file(source_file, dest_file)
+		os.chmod(dest_file, stat.S_IXUSR)
 		print(f"\tConfig file {dest_file} now in place.\n")
 	except:
 		err_msg = "Configuration file copy failed."
@@ -85,6 +90,7 @@ def copy_initd_file():
 	dest_file = f"{config.INIT_PATH}/docker-launch.sh"
 	try:
 		copy_file(source_file, dest_file)
+		os.chmod(dest_file, stat.S_IXUSR)
 		print(f"\tInit file {dest_file} now in place.\n")
 	except:
 		err_msg = "Init.d file copy failed."
