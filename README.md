@@ -26,7 +26,7 @@ location does not match the intended deployment, simply edit that parameter
 to reflect the desired location and/or filename.
 
 An example configuration file is supplied in the samples directory, named
-sample-docker-launch.conf. The header lines contain detailed comments
+'sample-docker-launch.conf'. The header lines contain detailed comments
 explaining the format and options. You can copy this file to the target path
 and filename of the intended configuration file, and then edit it to reflect
 the target Docker environment.
@@ -34,13 +34,17 @@ the target Docker environment.
 The config.py parameter INSTALLED_PATH indicates the default location where
 docker-launch will be installed, and where it is expected to reside during
 execution. If its install location will be different, modify this parameter
-prior to running setup.py.
+as well.
+
+You should modify all config.py parameters prior to running setup.py. If setup
+has already been run, you will need to move files around manually (or remove
+the prior files and redeploy by running setup.py again).
 
 ## Deployment
-1. If necessary, make any modifications to the config.py file.
-  a. Modify CONFIG_FILE path and filename to point to the configuration file.
+1. If necessary, make any modifications to the config.py file.  
+  a. Modify CONFIG_FILE path and filename to point to the configuration file.  
   b. Modify the INSTALLED_PATH to point to the directory where the 
-docker-launch routines will be installed and will run from in normal operation.
+docker-launch routines will be installed and will run from in normal operation.  
 2. Change into the directory where docker-launch was cloned or where it
 currently resides. They should not reside in INSTALL_PATH before running
 setup.py in the next step.
